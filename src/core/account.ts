@@ -27,6 +27,8 @@ export class AccountCategory implements TypeAndName {
 
     public static readonly Cash = new AccountCategory(1, 1, 'Cash', true, false, '1');
     public static readonly CheckingAccount = new AccountCategory(2, 2, 'Checking Account', true, false, '100');
+    // 新增类别示例：与后端常量值 10 对应，按需调整名称/图标
+    public static readonly Category21 = new AccountCategory(10, 10, 'Category 21', true, false, '100');
     public static readonly SavingsAccount = new AccountCategory(8, 3, 'Savings Account', true, false, '100');
     public static readonly CreditCard = new AccountCategory(3, 4, 'Credit Card', false, true, '100');
     public static readonly VirtualAccount = new AccountCategory(4, 5, 'Virtual Account', true, false, '500');
