@@ -1,0 +1,13 @@
+asset:
+    - 1 # CASH
+    - 2 # CHECKING_ACCOUNT
+    - 4 # VIRTUAL
+    - 6 # RECEIVABLES
+    - 7 # INVESTMENT
+    - 8 # SAVINGS_ACCOUNT
+    - 9 # CERTIFICATE_OF_DEPOSIT
+    - 10 # CATEGORY_21（示例）
+
+liability:
+    - 3 # CREDIT_CARD
+    - 5 # DEBT
