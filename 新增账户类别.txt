@@ -1,0 +1,4 @@
+修改src/conf/AccountCategories.json
+然后执行npm run build重新编译前端代码,之后用dist目录替换服务器上public目录
+
+后端目前我预留到35个类别，超出的话，需修改服务器上的/conf/AccountConfig.yml增加类别数量之后在任务管理器中重启ezbookping服务即可

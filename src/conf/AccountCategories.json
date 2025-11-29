@@ -1,0 +1,138 @@
+[
+  {
+    "type": 1,
+    "displayOrder": 1,
+    "name": "15-16-17-应收投资",
+    "isAsset": true,
+    "isLiability": false,
+    "defaultAccountIconId": "1",
+    "staticPropertyName": "Cash"
+  },
+  {
+    "type": 2,
+    "displayOrder": 2,
+    "name": "15-16-17-前期支出",
+    "isAsset": true,
+    "isLiability": false,
+    "defaultAccountIconId": "1",
+    "staticPropertyName": "Cash"
+  },
+  {
+    "type": 3,
+    "displayOrder": 3,
+    "name": "15-16-17-文斌账户",
+    "isAsset": false,
+    "isLiability": true,
+    "defaultAccountIconId": "1",
+    "staticPropertyName": "CreditCard"
+  },
+  {
+    "type": 4,
+    "displayOrder": 4,
+    "name": "15-16-17-放款账户",
+    "isAsset": true,
+    "isLiability": false,
+    "defaultAccountIconId": "1",
+    "staticPropertyName": "Cash"
+  },
+  {
+    "type": 5,
+    "displayOrder": 1,
+    "name": "20-21-23-应收投资",
+    "isAsset": true,
+    "isLiability": false,
+    "defaultAccountIconId": "1",
+    "staticPropertyName": "Cash"
+  },
+  {
+    "type": 6,
+    "displayOrder": 2,
+    "name": "20-21-23-前期支出",
+    "isAsset": true,
+    "isLiability": false,
+    "defaultAccountIconId": "1",
+    "staticPropertyName": "Cash"
+  },
+  {
+    "type": 7,
+    "displayOrder": 3,
+    "name": "20-21-23-文斌账户",
+    "isAsset": true,
+    "isLiability": false,
+    "defaultAccountIconId": "1",
+    "staticPropertyName": "Cash"
+  },
+  {
+    "type": 8,
+    "displayOrder": 4,
+    "name": "20-21-23-放款账户",
+    "isAsset": true,
+    "isLiability": false,
+    "defaultAccountIconId": "1",
+    "staticPropertyName": "Cash"
+  },
+  {
+    "type": 9,
+    "displayOrder": 1,
+    "name": "24-25-应收投资",
+    "isAsset": true,
+    "isLiability": false,
+    "defaultAccountIconId": "1",
+    "staticPropertyName": "Cash"
+  },
+  {
+    "type": 10,
+    "displayOrder": 2,
+    "name": "24-25-前期支出",
+    "isAsset": true,
+    "isLiability": false,
+    "defaultAccountIconId": "1",
+    "staticPropertyName": "Cash"
+  },
+  {
+    "type": 11,
+    "displayOrder": 3,
+    "name": "24-25-文斌账户",
+    "isAsset": true,
+    "isLiability": false,
+    "defaultAccountIconId": "1",
+    "staticPropertyName": "Cash"
+  },
+  {
+    "type": 12,
+    "displayOrder": 4,
+    "name": "24-25-放款账户",
+    "isAsset": true,
+    "isLiability": false,
+    "defaultAccountIconId": "1",
+    "staticPropertyName": "Cash"
+  },
+  {
+    "type": 13,
+    "displayOrder": 1,
+    "name": "代付工资",
+    "isAsset": true,
+    "isLiability": false,
+    "defaultAccountIconId": "1",
+    "staticPropertyName": "Cash"
+  },
+  {
+    "type": 14,
+    "displayOrder": 2,
+    "name": "提现总额",
+    "isAsset": true,
+    "isLiability": false,
+    "defaultAccountIconId": "1",
+    "staticPropertyName": "Cash"
+  },
+  {
+    "type": 15,
+    "displayOrder": 3,
+    "name": "郑祥账户1",
+    "isAsset": true,
+    "isLiability": false,
+    "defaultAccountIconId": "1",
+    "staticPropertyName": "Cash"
+  }
+]
+

@@ -1,5 +1,18 @@
 import type { TypeAndName, TypeAndDisplayName } from './base.ts';
 
+// 导入账户分类配置
+import accountCategoriesConfig from '../conf/AccountCategories.json';
+
+interface AccountCategoryConfig {
+    type: number;
+    displayOrder: number;
+    name: string;
+    isAsset: boolean;
+    isLiability: boolean;
+    defaultAccountIconId: string;
+    staticPropertyName: string;
+}
+
 export class AccountType implements TypeAndName {
     private static readonly allInstances: AccountType[] = [];
 
@@ -25,35 +38,33 @@ export class AccountCategory implements TypeAndName {
     private static readonly allInstances: AccountCategory[] = [];
     private static readonly allInstancesByType: Record<number, AccountCategory> = {};
 
-    public static readonly Cash = new AccountCategory(1, 1, 'TouZi-15_16_17', true, false, '1');
-    public static readonly CheckingAccount = new AccountCategory(2, 2, 'ZhiChu-15_16_17', true, false, '100');
-    public static readonly CreditCard = new AccountCategory(3, 3, 'WenBin-15_16_17', true, false, '100');
-    public static readonly VirtualAccount = new AccountCategory(4, 4, 'FangKuan-15_16_17', true, false, '500');
+    // 静态属性将在初始化函数中动态创建
+    // 注意：新添加的分类会自动创建静态属性，无需在此预先声明
+    public static Cash: AccountCategory;
+    public static CheckingAccount: AccountCategory;
+    public static CreditCard: AccountCategory;
+    public static VirtualAccount: AccountCategory;
+    public static DebtAccount: AccountCategory;
+    public static Receivables: AccountCategory;
+    public static InvestmentAccount: AccountCategory;
+    public static SavingsAccount: AccountCategory;
+    public static TouZi3: AccountCategory;
+    public static ZhiChu3: AccountCategory;
+    public static WenBin3: AccountCategory;
+    public static FangKuan3: AccountCategory;
+    public static CertificateOfDeposit: AccountCategory;
+    public static Withdraw: AccountCategory;
+    public static Category21: AccountCategory;
+    public static Category22: AccountCategory;
+    public static NewCategory: AccountCategory; // 新添加的分类示例
 
-    public static readonly DebtAccount = new AccountCategory(5, 1, 'TouZi-20_21_23', true, false, '600');
-    public static readonly Receivables = new AccountCategory(6, 2, 'ZhiChu-20_21_23', true, false, '700');
-    public static readonly InvestmentAccount = new AccountCategory(7, 3, 'WenBin-20_21_23', true, false, '800');
-    public static readonly SavingsAccount = new AccountCategory(8, 4, 'FangKuan-20_21_23', true, false, '100');
-
-    public static readonly TouZi3 = new AccountCategory(9, 1, 'TouZi-24_25', true, false, '600');
-    public static readonly ZhiChu3 = new AccountCategory(10, 2, 'ZhiChu-24_25', true, false, '700');
-    public static readonly WenBin3 = new AccountCategory(11, 3, 'WenBin-24_25', true, false, '800');
-    public static readonly FangKuan3 = new AccountCategory(12, 4, 'FangKuan-24_25', true, false, '100');
-
-    public static readonly CertificateOfDeposit = new AccountCategory(13, 1, 'DaiFuGongZi', true, false, '110');
-
-    public static readonly Withdraw = new AccountCategory(14, 2, 'Withdraw', true, false, '100');
-    // 新增类别示例：与后端常量值 10 对应，按需调整名称/图标
-    public static readonly Category21 = new AccountCategory(15, 3, 'Category 21', true, false, '100');
-    public static readonly Category22 = new AccountCategory(16, 4, 'Category 22', true, false, '100');
-
-    public static readonly Default = AccountCategory.Cash;
+    public static Default: AccountCategory;
 
     public readonly type: number;
     public readonly displayOrder: number;
     public readonly name: string;
     public readonly isAsset: boolean;
-    public readonly isLiability: boolean
+    public readonly isLiability: boolean;
     public readonly defaultAccountIconId: string;
 
     private constructor(type: number, displayOrder: number, name: string, isAsset: boolean, isLiability: boolean, defaultAccountIconId: string) {
@@ -68,6 +79,32 @@ export class AccountCategory implements TypeAndName {
         AccountCategory.allInstancesByType[type] = this;
     }
 
+    /**
+     * 从配置文件初始化所有账户分类实例
+     */
+    public static initializeFromConfig(): void {
+        const configs = accountCategoriesConfig as AccountCategoryConfig[];
+        
+        for (const config of configs) {
+            const instance = new AccountCategory(
+                config.type,
+                config.displayOrder,
+                config.name,
+                config.isAsset,
+                config.isLiability,
+                config.defaultAccountIconId
+            );
+
+            // 将实例赋值给对应的静态属性（动态创建，即使未预先声明）
+            if (config.staticPropertyName) {
+                (AccountCategory as any)[config.staticPropertyName] = instance;
+            }
+        }
+
+        // 设置默认值
+        AccountCategory.Default = AccountCategory.Cash;
+    }
+
     public static values(): AccountCategory[] {
         return AccountCategory.allInstances;
     }
@@ -76,6 +113,9 @@ export class AccountCategory implements TypeAndName {
         return AccountCategory.allInstancesByType[type];
     }
 }
+
+// 初始化账户分类
+AccountCategory.initializeFromConfig();
 
 export interface LocalizedAccountCategory extends TypeAndDisplayName {
     readonly type: number;

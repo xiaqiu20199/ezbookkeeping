@@ -10,6 +10,7 @@
         "noUnusedLocals": true,
         "noFallthroughCasesInSwitch": true,
         "noPropertyAccessFromIndexSignature": true,
+        "resolveJsonModule": true,
         "paths": {
             "@/*": ["./src/*"]
         }

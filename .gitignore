@@ -11,6 +11,7 @@
 # Test binary, build with `go test -c`
 *.test
 
+
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
 ### Windows template
@@ -101,6 +102,7 @@ Temporary Items
 # Gradle
 .idea/**/gradle.xml
 .idea/**/libraries
+log/*.log
 
 # CMake
 cmake-build-debug/
@@ -115,6 +117,7 @@ cmake-build-release/
 # IntelliJ
 out/
 package/
+log/
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/
@@ -149,3 +152,4 @@ dist/
 
 # Roo Code
 .roo/
+*.log
