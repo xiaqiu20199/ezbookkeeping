@@ -1598,6 +1598,27 @@
     "Transfer": "转账",
     "Transfer In": "转入",
     "Transfer Out": "转出",
+    
+    "TouZi-15_16_17": "15-16-17应收投资",
+    "ZhiChu-15_16_17":"15-16-17-前期支出",
+    "WenBin-15_16_17":"15-16-17-文斌",
+    "FangKuan-15_16_17":"15-16-17-放款",
+
+    "TouZi-20_21_23": "20-21-23应收投资",
+    "ZhiChu-20_21_23":"20-21-23-前期支出",
+    "WenBin-20_21_23":"20-21-23-文斌",
+    "FangKuan-20_21_23":"20-21-23-放款",
+
+    "TouZi-24_25": "24-25应收投资",
+    "ZhiChu-24_25":"24-25-前期支出",
+    "WenBin-24_25":"24-25-文斌",
+    "FangKuan-24_25":"24-25-放款",
+
+    "DaiFuGongZi":"代付工资",
+
+    "Withdraw":"提现账户",
+
+
     "Cash": "现金",
     "Checking Account": "借记账户",
     "Credit Card": "信用卡",
@@ -1608,6 +1629,7 @@
     "Savings Account": "储蓄账户",
     "Certificate of Deposit": "定期存款",
     "Balance": "余额",
+    "Original Currency Balance": "原币余额",
     "Outstanding Balance": "未清余额",
     "Unable to retrieve account list": "无法获取账户列表",
     "Account list is up to date": "账户列表已是最新",

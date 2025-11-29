@@ -25,17 +25,27 @@ export class AccountCategory implements TypeAndName {
     private static readonly allInstances: AccountCategory[] = [];
     private static readonly allInstancesByType: Record<number, AccountCategory> = {};
 
-    public static readonly Cash = new AccountCategory(1, 1, 'Cash', true, false, '1');
-    public static readonly CheckingAccount = new AccountCategory(2, 2, 'Checking Account', true, false, '100');
+    public static readonly Cash = new AccountCategory(1, 1, 'TouZi-15_16_17', true, false, '1');
+    public static readonly CheckingAccount = new AccountCategory(2, 2, 'ZhiChu-15_16_17', true, false, '100');
+    public static readonly CreditCard = new AccountCategory(3, 3, 'WenBin-15_16_17', true, false, '100');
+    public static readonly VirtualAccount = new AccountCategory(4, 4, 'FangKuan-15_16_17', true, false, '500');
+
+    public static readonly DebtAccount = new AccountCategory(5, 1, 'TouZi-20_21_23', true, false, '600');
+    public static readonly Receivables = new AccountCategory(6, 2, 'ZhiChu-20_21_23', true, false, '700');
+    public static readonly InvestmentAccount = new AccountCategory(7, 3, 'WenBin-20_21_23', true, false, '800');
+    public static readonly SavingsAccount = new AccountCategory(8, 4, 'FangKuan-20_21_23', true, false, '100');
+
+    public static readonly TouZi3 = new AccountCategory(9, 1, 'TouZi-24_25', true, false, '600');
+    public static readonly ZhiChu3 = new AccountCategory(10, 2, 'ZhiChu-24_25', true, false, '700');
+    public static readonly WenBin3 = new AccountCategory(11, 3, 'WenBin-24_25', true, false, '800');
+    public static readonly FangKuan3 = new AccountCategory(12, 4, 'FangKuan-24_25', true, false, '100');
+
+    public static readonly CertificateOfDeposit = new AccountCategory(13, 1, 'DaiFuGongZi', true, false, '110');
+
+    public static readonly Withdraw = new AccountCategory(14, 2, 'Withdraw', true, false, '100');
     // 新增类别示例：与后端常量值 10 对应，按需调整名称/图标
-    public static readonly Category21 = new AccountCategory(10, 10, 'Category 21', true, false, '100');
-    public static readonly SavingsAccount = new AccountCategory(8, 3, 'Savings Account', true, false, '100');
-    public static readonly CreditCard = new AccountCategory(3, 4, 'Credit Card', false, true, '100');
-    public static readonly VirtualAccount = new AccountCategory(4, 5, 'Virtual Account', true, false, '500');
-    public static readonly DebtAccount = new AccountCategory(5, 6, 'Debt Account', false, true, '600');
-    public static readonly Receivables = new AccountCategory(6, 7, 'Receivables', true, false, '700');
-    public static readonly CertificateOfDeposit = new AccountCategory(9, 8, 'Certificate of Deposit', true, false, '110');
-    public static readonly InvestmentAccount = new AccountCategory(7, 9, 'Investment Account', true, false, '800');
+    public static readonly Category21 = new AccountCategory(15, 3, 'Category 21', true, false, '100');
+    public static readonly Category22 = new AccountCategory(16, 4, 'Category 22', true, false, '100');
 
     public static readonly Default = AccountCategory.Cash;
 

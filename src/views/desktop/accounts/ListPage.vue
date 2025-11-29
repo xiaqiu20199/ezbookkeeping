@@ -91,9 +91,18 @@
                                     </template>
 
                                     <v-card-text class="accounts-overview-title text-truncate pt-0">
-                                        <span class="accounts-overview-subtitle">{{ activeAccountCategory?.isLiability ? tt('Outstanding Balance') : tt('Balance') }}</span>
-                                        <v-skeleton-loader class="skeleton-no-margin ms-3 mb-2" width="120px" type="text" :loading="true" v-if="loading && activeAccountCategory && !hasAccount(activeAccountCategory)"></v-skeleton-loader>
-                                        <span class="accounts-overview-amount ms-3" v-else-if="!loading || !activeAccountCategory || hasAccount(activeAccountCategory)">{{ activeAccountCategoryTotalBalance }}</span>
+                                        <div class="accounts-overview-lines">
+                                            <div class="accounts-overview-line">
+                                                <span class="accounts-overview-subtitle">{{ activeAccountCategory?.isLiability ? tt('Outstanding Balance') : tt('Balance') }}</span>
+                                                <v-skeleton-loader class="skeleton-no-margin" width="120px" type="text" :loading="true"
+                                                                   v-if="loading && activeAccountCategory && !hasAccount(activeAccountCategory)"></v-skeleton-loader>
+                                                <span class="accounts-overview-amount" v-else>{{ activeAccountCategoryTotalBalance }}</span>
+                                            </div>
+                                            <div class="accounts-overview-line" v-if="!loading && activeAccountCategoryOriginalTotalBalance">
+                                                <span class="accounts-overview-subtitle">{{ tt('Original Currency Balance') }}</span>
+                                                <span class="accounts-overview-original-amount">{{ activeAccountCategoryOriginalTotalBalance }}</span>
+                                            </div>
+                                        </div>
                                         <v-btn class="ms-2" density="compact" color="default" variant="text"
                                                :icon="true" :disabled="loading"
                                                @click="showAccountBalance = !showAccountBalance">
@@ -352,6 +361,7 @@ const {
     totalAssets,
     totalLiabilities,
     accountCategoryTotalBalance,
+    accountCategoryOriginalTotalBalance,
     accountBalance
 } = useAccountListPageBaseBase();
 
@@ -374,6 +384,7 @@ const showCustomDateRangeDialog = ref<boolean>(false);
 const hasAnyVisibleAccount = computed<boolean>(() => accountsStore.allVisibleAccountsCount > 0);
 const activeAccountCategory = computed<AccountCategory | undefined>(() => AccountCategory.valueOf(activeAccountCategoryType.value));
 const activeAccountCategoryTotalBalance = computed<string>(() => accountCategoryTotalBalance(activeAccountCategory.value));
+const activeAccountCategoryOriginalTotalBalance = computed<string>(() => accountCategoryOriginalTotalBalance(activeAccountCategory.value));
 
 const activeAccountCategoryVisibleAccountCount = computed<number>(() => {
     if (!activeAccountCategory.value || !allCategorizedAccountsMap.value[activeAccountCategory.value.type] || !allCategorizedAccountsMap.value[activeAccountCategory.value.type].accounts) {
@@ -664,10 +675,31 @@ reload(false);
     line-height: 2rem !important;
     min-height: 52px;
     display: flex;
-    align-items: flex-end;
+    align-items: flex-start;
+}
+
+.accounts-overview-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    flex: 1;
+}
+
+.accounts-overview-line {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.75rem;
 }
 
 .accounts-overview-amount {
+    font-size: 1.5rem;
+    color: rgba(var(--v-theme-on-background), var(--v-high-emphasis-opacity));
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.accounts-overview-original-amount {
     font-size: 1.5rem;
     color: rgba(var(--v-theme-on-background), var(--v-high-emphasis-opacity));
     overflow: hidden;

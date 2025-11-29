@@ -1,6 +1,7 @@
 # Created by .ignore support plugin (hsz.mobi)
 ### Go template
 # Binaries for programs and plugins
+*.zip
 *.exe
 *.exe~
 *.dll
@@ -113,6 +114,7 @@ cmake-build-release/
 
 # IntelliJ
 out/
+package/
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/

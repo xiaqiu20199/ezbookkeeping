@@ -28,6 +28,7 @@ require (
 	golang.org/x/text v0.27.0
 	gopkg.in/ini.v1 v1.67.0
 	gopkg.in/mail.v2 v2.3.1
+	gopkg.in/yaml.v3 v3.0.1
 	xorm.io/builder v0.3.13
 	xorm.io/xorm v1.3.10
 )
@@ -94,5 +95,4 @@ require (
 	golang.org/x/sys v0.34.0 // indirect
 	google.golang.org/protobuf v1.36.6 // indirect
 	gopkg.in/alexcesaro/quotedprintable.v3 v3.0.0-20150716171945-2caba252f4dc // indirect
-	gopkg.in/yaml.v3 v3.0.1 // indirect
 )

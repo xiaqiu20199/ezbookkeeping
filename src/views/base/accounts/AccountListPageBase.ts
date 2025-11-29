@@ -12,9 +12,10 @@ import { type AccountCategory, AccountType } from '@/core/account.ts';
 import type { Account, CategorizedAccount } from '@/models/account.ts';
 
 import { isObject, isNumber, isString } from '@/lib/common.ts';
+import { getAllFilteredAccountsBalance } from '@/lib/account.ts';
 
 export function useAccountListPageBaseBase() {
-    const { formatAmountToLocalizedNumeralsWithCurrency } = useI18n();
+    const { formatAmountToLocalizedNumeralsWithCurrency, joinMultiText } = useI18n();
 
     const settingsStore = useSettingsStore();
     const userStore = useUserStore();
@@ -61,6 +62,49 @@ export function useAccountListPageBaseBase() {
         return formatAmountToLocalizedNumeralsWithCurrency(totalBalance, defaultCurrency.value);
     }
 
+    function accountCategoryOriginalTotalBalance(accountCategory?: AccountCategory): string {
+        if (!accountCategory || !showAccountBalance.value) {
+            return '';
+        }
+
+        const accountsBalance = getAllFilteredAccountsBalance(allCategorizedAccountsMap.value, account => account.category === accountCategory.type);
+        const balanceByCurrency: Record<string, number> = {};
+
+        for (let i = 0; i < accountsBalance.length; i++) {
+            const currency = accountsBalance[i].currency;
+            let balance = accountsBalance[i].balance;
+
+            if (accountsBalance[i].isAsset) {
+                // 资产账户，余额为正
+            } else if (accountsBalance[i].isLiability) {
+                // 负债账户，余额为负
+                balance = -balance;
+            }
+
+            if (!balanceByCurrency[currency]) {
+                balanceByCurrency[currency] = 0;
+            }
+            balanceByCurrency[currency] += balance;
+        }
+
+        const balanceStrings: string[] = [];
+        for (const currency in balanceByCurrency) {
+            if (Object.prototype.hasOwnProperty.call(balanceByCurrency, currency)) {
+                const balance = balanceByCurrency[currency];
+                if (balance !== 0) {
+                    const formatted = formatAmountToLocalizedNumeralsWithCurrency(balance, currency);
+                    balanceStrings.push(formatted);
+                }
+            }
+        }
+
+        if (balanceStrings.length === 0) {
+            return '';
+        }
+
+        return joinMultiText(balanceStrings);
+    }
+
     function accountBalance(account: Account, currentSubAccountId?: string): string | null {
         if (account.type === AccountType.SingleAccount.type) {
             const balance: number| HiddenAmount | null = accountsStore.getAccountBalance(showAccountBalance.value, account);
@@ -101,6 +145,7 @@ export function useAccountListPageBaseBase() {
         totalLiabilities,
         // functions
         accountCategoryTotalBalance,
+        accountCategoryOriginalTotalBalance,
         accountBalance
     };
 }

@@ -7,6 +7,8 @@ asset:
     - 8 # SAVINGS_ACCOUNT
     - 9 # CERTIFICATE_OF_DEPOSIT
     - 10 # CATEGORY_21（示例）
+    - 11 # CATEGORY_22（示例）
+    - 12 # CATEGORY_22（示例）
 
 liability:
     - 3 # CREDIT_CARD
